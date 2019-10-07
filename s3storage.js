@@ -67,6 +67,7 @@ function prepopulateFlows(resolve) {
                     resolve();
             });
         } else {
+            console.log(doc)
             resolve();
         }
     });
@@ -98,6 +99,7 @@ var s3storage = {
                         }
                     });
                 } else {
+                    console.log(data)
                     prepopulateFlows(resolve);
                     resolve();
                 }
@@ -138,7 +140,10 @@ var s3storage = {
                         reject(err.toString());
                     }
                 } else {
+                    console.log('From getdata')
+                    console.log(doc)
                     var strObj = doc.Body.toString() ;
+                    console.log(strObj)
                     var dataEntry = JSON.parse(strObj);
                     resolve(dataEntry);
                 }
